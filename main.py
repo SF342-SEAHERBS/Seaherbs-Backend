@@ -177,6 +177,7 @@ def getAllDataFromPost2Method():
           OPTIONAL { ?herb onto:hasHowToUse ?howToUse }
           OPTIONAL { ?herb onto:Reference ?reference }
         }
+        LIMIT 1000
         """
             
         result_herb_info = g.query(query)
@@ -203,8 +204,6 @@ def getAllDataFromPost2Method():
                 result_synonym = g.query(synonymQuery)
                 synonymList = [syn["synonym"] for syn in result_synonym]
                 
-                
-            if row["otherName"]:
                 otherNameQuery = (
                     """
                     PREFIX onto: <http://www.w3.org/2002/07/owl#>
